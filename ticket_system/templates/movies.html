@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Movies</title>
+</head>
+<body>
+    <h1>Available Movies</h1>
+
+    {% for movie in movies %}
+        <div style="border:1px solid #ccc; padding:15px; margin:15px;">
+            <h2>{{ movie.title }}</h2>
+            <p>Language: {{ movie.language.name }}</p>
+            <p>Rating: {{ movie.rating }}</p>
+
+            <a href="/movies/{{ movie.id }}/">View Details</a>
+        </div>
+    {% empty %}
+        <p>No movies available.</p>
+    {% endfor %}
+</body>
+</html>

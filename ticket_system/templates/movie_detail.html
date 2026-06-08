@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ movie.title }}</title>
+</head>
+<body>
+
+<h1>{{ movie.title }}</h1>
+
+<p>Language: {{ movie.language.name }}</p>
+<p>Rating: {{ movie.rating }}</p>
+
+<h2>Trailer</h2>
+
+{% if embed_url %}
+    <iframe
+        width="560"
+        height="315"
+        src="{{ embed_url }}"
+        title="YouTube trailer"
+        loading="lazy"
+        referrerpolicy="strict-origin-when-cross-origin"
+        sandbox="allow-scripts allow-same-origin allow-presentation"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen>
+    </iframe>
+{% else %}
+    <p>Trailer is currently unavailable.</p>
+{% endif %}
+
+</body>
+</html>
