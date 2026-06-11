@@ -2,13 +2,200 @@
 <html>
 <head>
     <title>Ticket System</title>
+
+    <style>
+        body{
+            margin:0;
+            font-family:Arial, sans-serif;
+            background:linear-gradient(135deg,#020617,#111827,#1e293b);
+            color:white;
+        }
+
+        .navbar{
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+            padding:20px 50px;
+            background:rgba(0,0,0,0.3);
+        }
+
+        .logo{
+            font-size:24px;
+            font-weight:bold;
+        }
+
+        .nav a{
+            color:white;
+            text-decoration:none;
+            margin-left:20px;
+        }
+
+        .hero{
+            min-height:80vh;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            text-align:center;
+            padding:40px;
+        }
+
+        .hero-box{
+            max-width:800px;
+        }
+
+        h1{
+            font-size:52px;
+            margin-bottom:20px;
+        }
+
+        p{
+            font-size:18px;
+            color:#cbd5e1;
+            line-height:1.6;
+        }
+
+        .buttons{
+            margin-top:30px;
+        }
+
+        .btn{
+            display:inline-block;
+            padding:14px 22px;
+            margin:10px;
+            background:#2563eb;
+            color:white;
+            text-decoration:none;
+            border-radius:10px;
+            font-weight:bold;
+        }
+
+        .btn.secondary{
+            background:#374151;
+        }
+
+        .features{
+            display:grid;
+            grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+            gap:20px;
+            padding:40px 60px;
+        }
+
+        .card{
+            background:#111827;
+            border:1px solid #334155;
+            border-radius:14px;
+            padding:20px;
+            text-align:center;
+        }
+
+        footer{
+            text-align:center;
+            padding:20px;
+            color:#94a3b8;
+        }
+    </style>
 </head>
+
 <body>
-    <h1>BookMyShow Style Ticket System</h1>
 
-    <p>Book movies, reserve seats, make payments, and get ticket confirmation emails.</p>
+<div class="navbar">
+    <div class="logo">Ticket System</div>
 
-    <a href="/movies/">View Movies</a><br><br>
-    <a href="/admin/analytics/">Admin Analytics</a>
+    <div class="nav">
+        <a href="/">Home</a>
+        <a href="/movies/">Movies</a>
+        <a href="/admin/analytics/">Admin</a>
+    </div>
+</div>
+
+<section class="hero">
+    <div class="hero-box">
+        <h1>Book Movies Smarter</h1>
+
+        <p>
+    This project is a Django based movie ticket booking system where users can
+    view movies, reserve seats, make payments, and receive booking confirmation.
+    It also includes admin analytics and secure trailer display.
+        </p>
+
+        <div class="buttons">
+            <a class="btn" href="/movies/">Explore Movies</a>
+            <a class="btn secondary" href="/admin/analytics/">Admin Dashboard</a>
+        </div>
+    </div>
+</section>
+<div style="
+display:flex;
+justify-content:center;
+gap:30px;
+padding:30px;
+flex-wrap:wrap;
+">
+
+<div style="
+background:#111827;
+padding:20px;
+border-radius:15px;
+width:180px;
+text-align:center;
+">
+<h2></h2>
+<h3>Movies</h3>
+<p>Multiple Titles</p>
+</div>
+
+<div style="
+background:#111827;
+padding:20px;
+border-radius:15px;
+width:180px;
+text-align:center;
+">
+<h2></h2>
+<h3>Reservations</h3>
+<p>Seat Lock System</p>
+</div>
+
+<div style="
+background:#111827;
+padding:20px;
+border-radius:15px;
+width:180px;
+text-align:center;
+">
+<h2></h2>
+<h3>Analytics</h3>
+<p>Admin Insights</p>
+</div>
+
+</div>
+<section class="features">
+
+    <div class="card">
+        <h3> Movie Filtering</h3>
+        <p>Filter movies by genre and language with pagination.</p>
+    </div>
+
+    <div class="card">
+        <h3> Seat Reservation</h3>
+        <p>Temporary seat locks prevent double booking.</p>
+    </div>
+
+    <div class="card">
+        <h3>Payment Workflow</h3>
+        <p>Idempotency and webhook handling for payment safety.</p>
+    </div>
+
+    <div class="card">
+        <h3>Admin Analytics</h3>
+        <p>Revenue, booking trends, and movie performance insights.</p>
+    </div>
+
+</section>
+
+<footer>
+    Built with Django • Celery • Redis • SQLite
+</footer>
+
 </body>
 </html>

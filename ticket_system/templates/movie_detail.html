@@ -2,31 +2,124 @@
 <html>
 <head>
     <title>{{ movie.title }}</title>
+
+    <style>
+        body{
+            margin:0;
+            font-family:Arial, sans-serif;
+            background:#020617;
+            color:white;
+        }
+
+        .navbar{
+            padding:20px 50px;
+            background:#111827;
+        }
+
+        .navbar a{
+            color:white;
+            text-decoration:none;
+            margin-right:20px;
+        }
+
+        .container{
+            max-width:1000px;
+            margin:40px auto;
+            padding:20px;
+        }
+
+        .movie-box{
+            background:#111827;
+            border:1px solid #334155;
+            border-radius:18px;
+            padding:30px;
+        }
+
+        h1{
+            font-size:42px;
+            margin-bottom:10px;
+        }
+
+        .info{
+            color:#cbd5e1;
+            font-size:18px;
+            margin-bottom:25px;
+        }
+
+        .trailer-box{
+            margin-top:30px;
+        }
+
+        iframe{
+            width:100%;
+            max-width:850px;
+            height:420px;
+            border-radius:14px;
+            border:none;
+        }
+
+        .fallback{
+            background:#1f2937;
+            padding:20px;
+            border-radius:12px;
+            color:#fbbf24;
+        }
+
+        .btn{
+            display:inline-block;
+            margin-top:25px;
+            padding:12px 18px;
+            background:#2563eb;
+            color:white;
+            text-decoration:none;
+            border-radius:10px;
+        }
+    </style>
 </head>
+
 <body>
 
-<h1>{{ movie.title }}</h1>
+<div class="navbar">
+    <a href="/">Home</a>
+    <a href="/movies/">Movies</a>
+    <a href="/admin/analytics/">Admin</a>
+</div>
 
-<p>Language: {{ movie.language.name }}</p>
-<p>Rating: {{ movie.rating }}</p>
+<div class="container">
 
-<h2>Trailer</h2>
+    <div class="movie-box">
 
-{% if embed_url %}
-    <iframe
-        width="560"
-        height="315"
-        src="{{ embed_url }}"
-        title="YouTube trailer"
-        loading="lazy"
-        referrerpolicy="strict-origin-when-cross-origin"
-        sandbox="allow-scripts allow-same-origin allow-presentation"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        allowfullscreen>
-    </iframe>
-{% else %}
-    <p>Trailer is currently unavailable.</p>
-{% endif %}
+        <h1>{{ movie.title }}</h1>
+
+        <div class="info">
+            <p><strong>Language:</strong> {{ movie.language.name }}</p>
+            <p><strong>Rating:</strong> ⭐ {{ movie.rating }}</p>
+        </div>
+
+        <div class="trailer-box">
+            <h2>Trailer</h2>
+
+            {% if embed_url %}
+                <iframe
+                    src="{{ embed_url }}"
+                    title="YouTube trailer"
+                    loading="lazy"
+                    referrerpolicy="strict-origin-when-cross-origin"
+                    sandbox="allow-scripts allow-same-origin allow-presentation"
+                    allowfullscreen>
+                </iframe>
+            {% else %}
+                <div class="fallback">
+                    Trailer is currently unavailable.
+                </div>
+            {% endif %}
+        </div>
+
+        <a class="btn" href="/movies/">Back to Movies</a>
+
+    </div>
+
+</div>
 
 </body>
 </html>
