@@ -6,12 +6,7 @@ SECRET_KEY = 'django-insecure-zvfldis7tpit8@7lo^4io_=mcnb$xb8+ismg#gc+all4717*v-
 
 DEBUG = True
 
-ALLOWED_HOSTS = [
-    "localhost",
-    "127.0.0.1",
-    ".onrender.com",
-]
-
+ALLOWED_HOSTS = ["*"]
 
 INSTALLED_APPS = [
     'django.contrib.admin',
