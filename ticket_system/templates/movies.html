@@ -12,9 +12,8 @@
             padding:30px;
         }
 
-        h1{
-            text-align:center;
-            margin-bottom:30px;
+        h1,h2{
+            margin:0;
         }
 
         .container{
@@ -28,10 +27,11 @@
             border-radius:15px;
             padding:20px;
             box-shadow:0 0 10px rgba(0,0,0,0.3);
+            transition:0.3s;
         }
 
-        .card h2{
-            margin-top:0;
+        .card:hover{
+            transform:translateY(-5px);
         }
 
         .btn{
@@ -41,36 +41,82 @@
             color:white;
             text-decoration:none;
             border-radius:8px;
+            margin-top:10px;
+            transition:0.3s;
         }
 
         .btn:hover{
             background:#1d4ed8;
+            transform:scale(1.05);
+        }
+
+        .banner{
+            background:linear-gradient(135deg,#2563eb,#7c3aed);
+            padding:30px;
+            border-radius:20px;
+            margin-bottom:30px;
+            text-align:center;
+        }
+
+        .featured{
+            background:linear-gradient(135deg,#dc2626,#7c3aed);
+            padding:30px;
+            border-radius:20px;
+            margin-bottom:30px;
+        }
+
+        .rating-badge{
+            display:inline-block;
+            background:#16a34a;
+            padding:8px 14px;
+            border-radius:20px;
+            font-weight:bold;
+            margin-top:10px;
+        }
+
+        .available{
+            color:#22c55e;
+            font-weight:bold;
+        }
+
+        footer{
+            text-align:center;
+            padding:20px;
+            margin-top:40px;
+            color:#94a3b8;
         }
     </style>
-
 </head>
 
 <body>
 
-<div style="
-background:linear-gradient(135deg,#2563eb,#7c3aed);
-padding:30px;
-border-radius:20px;
-margin-bottom:30px;
-text-align:center;
-">
-
-<h1 style="margin:0;">🎟 Book Your Favorite Movies</h1>
-
-<p style="margin-top:10px;">
-Secure Booking • Smart Analytics • Fast Reservations
-</p>
-
+<div class="banner">
+    <h1>🎟 Book Your Favorite Movies</h1>
+    <p>Movie listing with filtering, seat reservation and booking features</p>
 </div>
-<h1> Movie Booking System</h1>
+
+<h1 style="text-align:center;">🎬 Movie Booking System</h1>
+
 <p style="text-align:center;color:#cbd5e1;">
     Total Movies Available: {{ movies|length }}
 </p>
+
+<div class="featured">
+    <h2>🔥 Featured Movie of the Week</h2>
+
+    <p>
+        Browse available movies, check ratings, and view movie details before booking.
+    </p>
+
+    <a href="/movies/1/" class="btn">
+        Watch Details
+    </a>
+</div>
+
+<p style="text-align:center;color:#94a3b8;margin-bottom:20px;">
+    Select a movie to view details and trailer information.
+</p>
+
 <div style="text-align:center;margin-bottom:25px;">
     <input
         type="text"
@@ -84,94 +130,53 @@ Secure Booking • Smart Analytics • Fast Reservations
         font-size:16px;
         ">
 </div>
-<div style="
-background:linear-gradient(135deg,#dc2626,#7c3aed);
-padding:30px;
-border-radius:20px;
-margin-bottom:30px;
-">
 
-<h2>🔥 Featured Movie</h2>
-
-<p>
-Experience blockbuster entertainment with secure booking,
-smart seat reservation and instant confirmation.
-</p>
-
-<a
-href="/movies/1/"
-style="
-display:inline-block;
-padding:12px 18px;
-background:white;
-color:black;
-text-decoration:none;
-border-radius:10px;
-font-weight:bold;
-">
-Watch Details
-</a>
-
-</div>
 <div class="container">
 
 {% for movie in movies %}
 
 <div class="card">
+    <h2>{{ movie.title }}</h2>
 
-<h2>{{ movie.title }}</h2>
-<p style="
-color:#60a5fa;
-font-size:18px;
-font-weight:bold;
-">
-Now Showing
-</p>
+    <p style="color:#60a5fa;font-size:18px;font-weight:bold;">
+        Now Showing
+    </p>
 
-<p><strong>Language:</strong> {{ movie.language.name }}</p>
+    <p><strong>Language:</strong> {{ movie.language.name }}</p>
 
-<p><strong>Rating:</strong> ⭐ {{ movie.rating }}</p>
-<div style="
-display:inline-block;
-background:#16a34a;
-padding:8px 14px;
-border-radius:20px;
-font-weight:bold;
-margin-top:10px;
-">
-⭐ {{ movie.rating }}/10
-</div>
+    <p><strong>Rating:</strong> ⭐ {{ movie.rating }}</p>
 
-<p>
-    <strong>Genres:</strong>
-    {% for genre in movie.genres.all %}
-        {{ genre.name }}
-    {% endfor %}
-</p>
+    <div class="rating-badge">
+        ⭐ {{ movie.rating }}/10
+    </div>
 
-<p style="color:#22c55e;font-weight:bold;">
-    Available for Booking
-</p>
+    <p>
+        <strong>Genres:</strong>
+        {% for genre in movie.genres.all %}
+            {{ genre.name }}
+        {% endfor %}
+    </p>
 
-<a class="btn" href="/movies/{{ movie.id }}/">
-View Details
-<p style="font-size:12px;color:#9ca3af;">
-Book tickets instantly
-</p>
-</a>
+    <p class="available">
+        Available for Booking
+    </p>
 
+    <a class="btn" href="/movies/{{ movie.id }}/">
+        View Details
+    </a>
+
+    <p style="font-size:12px;color:#9ca3af;">
+        Book tickets instantly
+    </p>
 </div>
 
 {% endfor %}
 
 </div>
-<footer style="
-text-align:center;
-padding:20px;
-margin-top:40px;
-color:#94a3b8;
-">
-Powered by Django Ticket Booking System
+
+<footer>
+    🎟 Powered by Django Ticket Booking System • 2026
 </footer>
+
 </body>
 </html>
