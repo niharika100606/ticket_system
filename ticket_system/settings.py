@@ -6,7 +6,11 @@ SECRET_KEY = 'django-insecure-zvfldis7tpit8@7lo^4io_=mcnb$xb8+ismg#gc+all4717*v-
 
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    "localhost",
+    "127.0.0.1",
+    ".onrender.com",
+]
 
 
 INSTALLED_APPS = [
@@ -24,9 +28,10 @@ INSTALLED_APPS = [
 ]
 
 
-# MIDDLEWARE
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -39,7 +44,7 @@ MIDDLEWARE = [
 ROOT_URLCONF = 'ticket_system.urls'
 
 
-# TEMPLATES
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -59,7 +64,7 @@ TEMPLATES = [
 WSGI_APPLICATION = 'ticket_system.wsgi.application'
 
 
-# DATABASE
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
@@ -68,7 +73,6 @@ DATABASES = {
 }
 
 
-# PASSWORD VALIDATION
 AUTH_PASSWORD_VALIDATORS = [
     {'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator'},
     {'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator'},
@@ -77,7 +81,7 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 
-# INTERNATIONALIZATION
+
 LANGUAGE_CODE = 'en-us'
 
 TIME_ZONE = 'UTC'
@@ -87,11 +91,11 @@ USE_I18N = True
 USE_TZ = True
 
 
-# STATIC FILES
+
 STATIC_URL = '/static/'
 
 
-# CELERY CONFIG
+
 CELERY_BROKER_URL = 'redis://127.0.0.1:6379/0'
 CELERY_RESULT_BACKEND = 'django-db'
 
@@ -117,6 +121,3 @@ LOGGING = {
         "level": "INFO",
     },
 }
-RAZORPAY_KEY_ID = "rzp_test_your_key_id"
-RAZORPAY_KEY_SECRET = "your_key_secret"
-RAZORPAY_WEBHOOK_SECRET = "your_webhook_secret"
